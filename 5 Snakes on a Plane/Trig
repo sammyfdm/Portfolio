@@ -1,0 +1,92 @@
+    public static double sqrt (double a, double divisor,int z)
+    {
+        if (z > 0)
+            return(sqrt (a, (divisor + a/divisor)/2, z-1));
+        else
+            return(divisor);
+    }
+    
+    public static double sin (double a)
+    {
+        if (a == 0)
+            return(0);
+        else
+        {
+            double sin = a;
+            double mag;
+            for (int z = 3; z < trig; z+=4)
+            {
+                mag = a;
+                for (int y = 1; y < z; y++)
+                    mag *= a/(1+y);
+                sin -= mag;
+            }       
+            for (int z = 5; z < trig; z+=4)
+            {
+                mag = a;
+                for (int y = 1; y < z; y++)
+                    mag *= a/(1+y);
+                sin += mag;
+            }
+            return(sin);
+        }
+    }
+    
+    public static double cos (double a)
+    {
+        if (a == 0)
+            return(1);
+        else
+        {
+            double cos = 1;
+            double mag;
+            for (int z = 2; z < trig; z+=4)
+            {
+                mag = a;
+                for (int y = 1; y < z; y++)
+                    mag *= a/(1+y);
+                cos -= mag;
+            }       
+            for (int z = 4; z < trig; z+=4)
+            {
+                mag = a;
+                for (int y = 1; y < z; y++)
+                    mag *= a/(1+y);
+                cos += mag;
+            }
+            return(cos);
+        }
+    }
+    
+    public static double tan (double a)
+    {
+            return(Math.sin(a)/Math.cos(a));
+    }
+    
+    public static double atan (double a)
+    {
+        
+        double atan = a;
+        double mag;
+        for (int z = 3; z < trig; z+=4)
+        {
+            mag = a/z;
+            for (int y = 1; y < z; y++)
+                mag *= a;
+            atan -= mag;
+        }       
+        for (int z = 5; z < trig; z+=4)
+        {
+            mag = a/z;
+            for (int y = 1; y < z; y++)
+                mag *= a;
+            atan += mag;
+        }
+        return(atan);
+    }
+    
+    public static double acos (double a)
+    {
+        return(PI/2 - aMath.tan(a/sqrt(1-a*a,(1-a*a)/2,5)));
+    }
+    
